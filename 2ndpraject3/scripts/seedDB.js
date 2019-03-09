@@ -112,7 +112,7 @@ const tools = [
 
 db.Tool
   .remove({})
-  .then(() => db.Tool.collection.insertMany(toolSeed))
+  .then(() => db.Tool.collection.insertMany(tools))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
