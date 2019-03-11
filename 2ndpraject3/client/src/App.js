@@ -18,7 +18,7 @@ return(
                 <Link to="/review">Review</Link>
                 </li>
                 <li>
-                <Link to="/search">Contact</Link>
+                <Link to="/search">Search</Link>
                 </li>
             </ul>
             <Switch>
