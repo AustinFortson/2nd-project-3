@@ -1,4 +1,5 @@
 module.exports = {
-    Tool: require("./tool")
+    Tool: require("./tool"),
+    User: require("./user")
   };
   
