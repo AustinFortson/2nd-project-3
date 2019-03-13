@@ -11,24 +11,19 @@ const userSchema = new Schema({
       required: true
     },
     nameAddress: {
-      type: String,
-      required: true
+      type: String
     },
     nameCity: {
-      type: String,
-      required: true
+      type: String
     },
   nameState: {
-      type: String,
-      required: true
+      type: String
     },
   nameZipcode: {
-      type: Number,
-      required: true
+      type: Number
     }, 
   nameEmail: {
-    type: String,
-    required: true
+    type: String
   }
 })
 
