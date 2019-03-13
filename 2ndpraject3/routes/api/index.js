@@ -5,6 +5,6 @@ const usersRoutes = require("./users")
 
 //route to search page
 router.use("/tools", toolsRoutes);
-router.use("/users", usersRoutes);
+router.use("/",usersRoutes);
 
 module.exports = router;

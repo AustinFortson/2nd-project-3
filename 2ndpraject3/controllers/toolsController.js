@@ -24,7 +24,10 @@ module.exports = {
       db.User
         .create(req.body)
         .then(dbModel => res.json(dbModel))
-        .catch(err => res.status(422).json(err));
+        .catch(err => {
+          console.log(err);
+          res.status(422).json({"error": "something went wrong"});
+        });
     },
     update: function(req, res) {
       db.User
