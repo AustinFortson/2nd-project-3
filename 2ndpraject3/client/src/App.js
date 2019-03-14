@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
 import Search from "./pages/Search";
 import Review from "./pages/Review";
 import User from './pages/UserInput';
+import Login from './pages/Login';
 // import logo from './logo.svg';
 
 
@@ -20,12 +21,16 @@ return(
                 <li>
                 <Link to="/search">Search</Link>
                 </li>
+                <li>
+                <Link to="/login">Login</Link>
+                </li>
             </ul>
             <Switch>
               <Route exact path="/" component={User}/>
               <Route path="/user" component={User}/>
               <Route path="/search" component={Search}/>
               <Route path="/review" component={Review}/>
+              <Route path="/login" component={Login}/>
             </Switch>
         </div>
     </Router>
