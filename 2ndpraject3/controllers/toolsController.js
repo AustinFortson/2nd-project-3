@@ -22,6 +22,7 @@ module.exports = {
     },
     create: function(req, res) {
       db.User
+        .remove({})
         .create(req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => {
