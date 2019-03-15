@@ -370,8 +370,8 @@ class EnhancedTable extends React.Component {
                       key={n.id}
                       selected={isSelected}
                     >
-                      <TableCell padding="checkbox">
-                        <Checkbox checked={isSelected} />
+                      <TableCell padding="checkbox" id="checkbox">
+                        <Checkbox checked={isSelected} id="checkedBox" />
                       </TableCell>
                       <TableCell component="th" scope="row" padding="none">
                         {n.name}

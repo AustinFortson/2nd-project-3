@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
-import Search from "./pages/Search";
+import EnhancedTable from "./pages/Search";
 import Review from "./pages/Review";
 import User from './pages/UserInput';
 import Login from './pages/Login';
@@ -28,9 +28,9 @@ return(
             <Switch>
               <Route exact path="/" component={User}/>
               <Route path="/user" component={User}/>
-              <Route path="/search" component={Search}/>
+              <Route path="/search" component={EnhancedTable}/>
               <Route path="/review" component={Review}/>
-              <Route path="/login" component={Login}/>
+              {/* <Route path="/login" component={Login}/> */}
             </Switch>
         </div>
     </Router>

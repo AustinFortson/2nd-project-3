@@ -1,0 +1,43 @@
+body {
+    background-color: ;
+}
+
+#Toolbar {
+    background-color: #F96302;
+
+}
+
+#toolsForRent{
+    padding: 5px;
+    font-size: 36px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: inherit;
+    font-weight: bolder;
+    color: white
+}
+
+#selectedSubtitle{
+    color: white;
+}
+
+#homeDepotIcon {
+    height: 10%;
+    width: 10%;
+}
+
+#tableHead{
+    background-color: lightgrey;
+}
+
+#checkedBox{
+    background-color: #F96302;
+}
+
+#checkBox{
+    background-color: #F96302;
+}
+
+#tablePagination{
+    background-color: #F96302;
+    color: white;
+}
