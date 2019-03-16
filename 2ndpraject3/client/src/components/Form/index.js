@@ -1,52 +1,87 @@
 import React from 'react'
 
-export const Form = ({props}) =>{
-    return(
-    <div className="row">
-    <form className="col s12"></form>
-    </div>)
+class Form extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(
+            <div className="row">
+            <form className="col s12">{this.props.children}</form>
+            </div>)
+    }
     
 }
-export const Row = ({props}) =>{
-    return(<div className="row"></div>)
-}
-export const Inputs4 = (placehold,name,handleChange,value,type) =>{
-    return(
-    <div className="input-field col s4">
-    <input
-    className="validate" placeholder={placehold}
-    type={type}
-    name={name}
-    value={value}
-    onChange={handleChange}
-    />
-    </div>)
-}
-export const Inputs6 = ({placehold,name,handleChange,value,type}) =>{
-    return(
-    <div className="input-field col s6">
-    <input
-    className="validate" placeholder={placehold}
-    type={type}
-    name={name}
-    value={value}
-    onChange={handleChange}
-    />
-    </div>)
-}
-export const Inputs12 = ({placehold,name,handleChange,value,type}) =>{
-    return(
-    <div className="input-field col s12">
-    <input
-    className="validate" placeholder={placehold}
-    type={type}
-    name={name}
-    value={value}
-    onChange={handleChange}
-    />
-    </div>)
+class Row extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(<div className="row">{this.props.children}</div>)
+    }
     
 }
-export const Submit = ({handleSubmit}) =>{
-    return(<input type="submit" value="Submit" onClick={handleSubmit} />)
+class Inputs4 extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(<div className="input-field col s4">
+        <input
+        className="validate" placeholder={this.props.placehold}
+        type={this.props.type}
+        name={this.props.name}
+        value={this.props.value}
+        onChange={this.props.handleChange}
+        />
+        </div>)
+            
+        }
+    
 }
+class Inputs6 extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(<div className="input-field col s6">
+        <input
+        className="validate" placeholder={this.props.placehold}
+        type={this.props.type}
+        name={this.props.name}
+        value={this.props.value}
+        onChange={this.props.handleChange}
+        />
+        </div>)
+            
+        }
+    
+}
+class Inputs12 extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(<div className="input-field col s12">
+        <input
+        className="validate" placeholder={this.props.placehold}
+        type={this.props.type}
+        name={this.props.name}
+        value={this.props.value}
+        onChange={this.props.handleChange}
+        />
+        </div>)
+            
+        }
+    
+}
+class Submit extends React.Component{
+    constructor(props){
+        super(props);
+    }
+    render(){
+        return(<input type="submit" value="Submit" onClick={this.props.handleSubmit} />)
+    }
+    
+}
+export {Form, Row, Inputs4, Inputs6, Inputs12, Submit}

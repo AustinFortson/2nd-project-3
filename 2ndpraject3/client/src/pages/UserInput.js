@@ -1,6 +1,6 @@
 import React from 'react'
 import API from "../utils/API";
-import {Form,Row,Inputs4,Inputs6, Inputs12} from "../components/Form/index"
+import {Form,Row,Inputs12,Inputs6,Inputs4,Submit} from "../components/Form/index"
 class UserInput extends React.Component {
   constructor(props){
     super(props);
@@ -78,8 +78,8 @@ class UserInput extends React.Component {
           <Inputs4 placehold="Driver License Expiration Date" type="date" name="nameDriverExp" value={this.state.nameDriverExp} handleChange={this.handleChange}/>
           <Inputs4 placehold="Driver License State" type="text" name="nameDriverState" value={this.state.nameDriverState} handleChange={this.handleChange}/>
         </Row>
+        <Submit handleSubmit={this.handleSubmit}/>
       </Form>
-        
         </div>
         )
   }
