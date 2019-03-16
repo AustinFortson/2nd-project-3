@@ -3,12 +3,12 @@ import React from 'react'
 export const Form = ({props}) =>{
     return(
     <div className="row">
-    <form className="col s12">{...props}</form>
+    <form className="col s12"></form>
     </div>)
     
 }
 export const Row = ({props}) =>{
-    return(<div className="row">{...props}</div>)
+    return(<div className="row"></div>)
 }
 export const Inputs4 = (placehold,name,handleChange,value,type) =>{
     return(

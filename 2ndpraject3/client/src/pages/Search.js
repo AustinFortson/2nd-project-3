@@ -70,6 +70,7 @@ import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
 import PaymentIcon from '@material-ui/icons/Payment';
 import FilterListIcon from '@material-ui/icons/FilterList';
+import SearchIcon from '@material-ui/icons/Search';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import API from "../utils/API";
 import "./index.css";
@@ -114,6 +115,7 @@ const rows = [
   { id: '2_days', numeric: true, disablePadding: false, label: '2 Days' },
   { id: 'deposit', numeric: true, disablePadding: false, label: 'Deposit' },
 ];
+
 
 class EnhancedTableHead extends React.Component {
   createSortHandler = property => event => {
@@ -175,13 +177,13 @@ const toolbarStyles = theme => ({
   highlight:
     theme.palette.type === 'light'
       ? {
-          color: theme.palette.secondary.main,
-          backgroundColor: lighten(theme.palette.secondary.light, 0.85),
-        }
+        color: theme.palette.secondary.main,
+        backgroundColor: lighten(theme.palette.secondary.light, 0.85),
+      }
       : {
-          color: theme.palette.text.primary,
-          backgroundColor: theme.palette.secondary.dark,
-        },
+        color: theme.palette.text.primary,
+        backgroundColor: theme.palette.secondary.dark,
+      },
   spacer: {
     flex: '1 1 100%',
   },
@@ -197,7 +199,7 @@ let EnhancedTableToolbar = props => {
   const { numSelected, classes } = props;
 
   return (
-    <Toolbar id ="Toolbar"
+    <Toolbar id="Toolbar"
       className={classNames(classes.root, {
         [classes.highlight]: numSelected > 0,
       })}
@@ -206,13 +208,13 @@ let EnhancedTableToolbar = props => {
         {numSelected > 0 ? (
           <Typography color="inherit" variant="subtitle1">
             {numSelected} selected
-          </Typography>
+</Typography>
         ) : (
-          <Typography variant="h6" id="toolsForRent" >
-            <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/the-home-depot-1-logo.png" id="homeDepotIcon"></img>
-            Tools For Rent
-          </Typography>
-        )}
+            <Typography variant="h6" id="toolsForRent" >
+              <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/the-home-depot-1-logo.png" id="homeDepotIcon" alt=""></img>
+              Tools For Rent
+</Typography>
+          )}
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions} >
@@ -223,12 +225,12 @@ let EnhancedTableToolbar = props => {
             </IconButton>
           </Tooltip>
         ) : (
-          <Tooltip title="Filter list">
-            <IconButton aria-label="Filter list">
-              <FilterListIcon />
-            </IconButton>
-          </Tooltip>
-        )}
+            <Tooltip title="Filter list">
+              <IconButton aria-label="Filter list">
+                <FilterListIcon />
+              </IconButton>
+            </Tooltip>
+          )}
       </div>
     </Toolbar>
   );
@@ -337,77 +339,106 @@ class EnhancedTable extends React.Component {
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
+
     return (
-      <Paper className={classes.root} id="Paper">
-        <EnhancedTableToolbar numSelected={selected.length} />
-        <div className={classes.tableWrapper}>
-          <Table className={classes.table} aria-labelledby="tableTitle" id="table">
-            <EnhancedTableHead id="tableHead"
-              numSelected={selected.length}
-              order={order}
-              orderBy={orderBy}
-              onSelectAllClick={this.handleSelectAllClick}
-              onRequestSort={this.handleRequestSort}
-              rowCount={data.length}
-            />
-            <TableBody id="tableBody">
-              {stableSort(data, getSorting(order, orderBy))
-                .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                .map(n => {
-                  const isSelected = this.isSelected(n.id);
-                  return (
-                    <TableRow id="tableRow"
-                      hover
-                      onClick={event => this.handleClick(event, n.id)}
-                      role="checkbox"
-                      aria-checked={isSelected}
-                      tabIndex={-1}
-                      key={n.id}
-                      selected={isSelected}
-                    >
-                      <TableCell padding="checkbox" id="checkbox">
-                        <Checkbox checked={isSelected} id="checkedBox" />
-                      </TableCell>
-                      <TableCell component="th" scope="row" padding="none">
-                        {n.name}
-                      </TableCell>
-                      <TableCell align="left">{n.catagory}</TableCell>
-                      <TableCell align="right">{"$" + n.four_hour + ".00"}</TableCell>
-                      <TableCell align="right">{"$" + n.daily + ".00"}</TableCell>
-                      <TableCell align="right">{"$" + n.daily * 2 + ".00"}</TableCell>
-                      <TableCell align="right">{"$" + n.deposit + ".00"}</TableCell>
-                    </TableRow>
-                  );
-                })}
-              {emptyRows > 0 && (
-                <TableRow style={{ height: 49 * emptyRows }}>
-                  <TableCell colSpan={6} />
-                </TableRow>
-              )}
-            </TableBody>
-          </Table>
-        </div>
-        <TablePagination id="tablePagination"
-          rowsPerPageOptions={[10, 15, 20, 25, 50]}
-          component="div"
-          count={data.length}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          backIconButtonProps={{
-            'aria-label': 'Previous Page',
-          }}
-          nextIconButtonProps={{
-            'aria-label': 'Next Page',
-          }}
-          onChangePage={this.handleChangePage}
-          onChangeRowsPerPage={this.handleChangeRowsPerPage}
-        />
-      </Paper>
+      <div id="wholeRentalSearch">
+        <Paper className={classes.root} id="Paper">
+          <EnhancedTableToolbar numSelected={selected.length} />
+          <div class="search">
+            <SearchIcon id="searchIcon" />
+            <input type="text" id="searchField" onChange={function searchFunction() {
+              // Declare variables 
+              var input, filter, table, tr, th, i, txtValue;
+              input = document.getElementById("searchField");
+              filter = input.value.toUpperCase();
+              table = document.getElementById("tableBody");
+              tr = table.getElementsByTagName("tr");
+
+              // Loop through all table rows, and hide those who don't match the search query
+              for (i = 0; i < tr.length; i++) {
+                th = tr[i].getElementsByTagName("th")[0];
+                if (th) {
+                  txtValue = th.textContent || th.innerText;
+                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                  } else {
+                    tr[i].style.display = "none";
+                  }
+                }
+              }
+            }} placeholder="Search for tools ex. 'Lawn Mower'...">
+            </input>
+          </div>
+          <div className={classes.tableWrapper}>
+            <Table className={classes.table} aria-labelledby="tableTitle" id="table">
+              <EnhancedTableHead id="tableHead"
+                numSelected={selected.length}
+                order={order}
+                orderBy={orderBy}
+                onSelectAllClick={this.handleSelectAllClick}
+                onRequestSort={this.handleRequestSort}
+                rowCount={data.length}
+              />
+              <TableBody id="tableBody">
+                {stableSort(data, getSorting(order, orderBy))
+                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                  .map(n => {
+                    const isSelected = this.isSelected(n.id);
+                    return (
+                      <TableRow id="tableRow"
+                        hover
+                        onClick={event => this.handleClick(event, n.id)}
+                        role="checkbox"
+                        aria-checked={isSelected}
+                        tabIndex={-1}
+                        key={n.id}
+                        selected={isSelected}
+                      >
+                        <TableCell padding="checkbox" id="checkbox">
+                          <Checkbox checked={isSelected} id="checkedBox" />
+                        </TableCell>
+                        <TableCell component="th" scope="row" padding="none">
+                          {n.name}
+                        </TableCell>
+                        <TableCell align="left">{n.catagory}</TableCell>
+                        <TableCell align="right">{"$" + n.four_hour + ".00"}</TableCell>
+                        <TableCell align="right">{"$" + n.daily + ".00"}</TableCell>
+                        <TableCell align="right">{"$" + n.daily * 2 + ".00"}</TableCell>
+                        <TableCell align="right">{"$" + n.deposit + ".00"}</TableCell>
+                      </TableRow>
+                    );
+                  })}
+                {emptyRows > 0 && (
+                  <TableRow style={{ height: 49 * emptyRows }}>
+                    <TableCell colSpan={6} />
+                  </TableRow>
+                )}
+              </TableBody>
+            </Table>
+          </div>
+          <TablePagination id="tablePagination"
+            rowsPerPageOptions={[10, 15, 20, 25, 50]}
+            component="div"
+            count={data.length}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            backIconButtonProps={{
+              'aria-label': 'Previous Page',
+            }}
+            nextIconButtonProps={{
+              'aria-label': 'Next Page',
+            }}
+            onChangePage={this.handleChangePage}
+            onChangeRowsPerPage={this.handleChangeRowsPerPage}
+          />
+        </Paper>
+      </div>
     );
   }
 }
@@ -415,5 +446,9 @@ class EnhancedTable extends React.Component {
 EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
+
+
+
+
 
 export default withStyles(styles)(EnhancedTable);
