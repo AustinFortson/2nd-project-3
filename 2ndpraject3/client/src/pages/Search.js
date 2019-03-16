@@ -74,7 +74,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import API from "../utils/API";
 import "./index.css";
-
+import Gallery from "../components/gallery/index"
 
 
 let counter = 0;
@@ -438,6 +438,36 @@ class EnhancedTable extends React.Component {
             onChangeRowsPerPage={this.handleChangeRowsPerPage}
           />
         </Paper>
+        <div id="wholeGallery">
+          <Gallery>
+            <div id="gallery">
+              <hr></hr>
+              <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/outdoor-tool-rental-baked-sub-hero.jpg" alt="outdoorTool" height="30%" width="50%"></img>
+              <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/indoor-tool-rental-baked-sub-hero.jpg" alt="indoorTool" height="30%" width="50%"></img>
+              <hr></hr>
+
+              <ul id="links">
+                <li id="find"><a href="https://www.homedepot.com/l/search/3602/full/">
+                  | Find a Store |
+                </a>
+                </li>
+                <li id="find"><a href="https://www.homedepot.com/c/tool_and_truck_rental">
+                  | More Tool Info |
+                </a>
+                </li>
+                <li id="find"><a href="https://www.homedepot.com/tool-truck-rental/used-tools/index.html">
+                  | Used Tools For Sale |
+                </a>
+                </li>
+                <li id="find"><a href="https://www.homedepot.com/c/Tool_Rental_FAQ">
+                  | Tool Rental FAQ |
+                </a>
+                </li>
+              </ul>
+            </div>
+
+          </Gallery>
+        </div>
       </div>
     );
   }

@@ -1,5 +1,5 @@
 body {
-    background-color: whitesmoke;
+    background-color: black;
 }
 
 #wholeRentalSearch {
@@ -63,4 +63,28 @@ body {
 #tablePagination{
     background-color: #F96302;
     color: white;
+}
+
+#wholeGallery {
+    background-color: black;
+    color: white;
+    padding: 10px;
+}
+
+#links{
+    overflow: auto;
+    list-style-type: none;
+    margin: 0;
+    padding: 5px;
+    align-content: right
+}
+
+
+#find {
+    float: left;
+    padding:10px;
+}
+
+a{
+    color: lightgrey;
 }
