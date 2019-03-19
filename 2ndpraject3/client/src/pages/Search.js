@@ -78,11 +78,13 @@ import Gallery from "../components/gallery/index"
 
 
 let counter = 0;
+//Create Data Function
 function createData(name, catagory, four_hour, daily, deposit) {
   counter += 1;
   return { id: counter, name, catagory, four_hour, daily, deposit };
 }
 
+//Descending Function
 function desc(a, b, orderBy) {
   if (b[orderBy] < a[orderBy]) {
     return -1;
@@ -93,6 +95,7 @@ function desc(a, b, orderBy) {
   return 0;
 }
 
+//Stable Sort Function
 function stableSort(array, cmp) {
   const stabilizedThis = array.map((el, index) => [el, index]);
   stabilizedThis.sort((a, b) => {
@@ -103,10 +106,12 @@ function stableSort(array, cmp) {
   return stabilizedThis.map(el => el[0]);
 }
 
+//Get Sorting Function
 function getSorting(order, orderBy) {
   return order === 'desc' ? (a, b) => desc(a, b, orderBy) : (a, b) => -desc(a, b, orderBy);
 }
 
+//Row For Table
 const rows = [
   { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
   { id: 'catagory', numeric: false, disablePadding: false, label: 'Catagory' },
@@ -115,6 +120,10 @@ const rows = [
   { id: '2_days', numeric: true, disablePadding: false, label: '2 Days' },
   { id: 'deposit', numeric: true, disablePadding: false, label: 'Deposit' },
 ];
+
+  //////////////////////////////////////////////////////////////////////////////////
+ /////////////////   Start Of Enhanced Table Head On Top Of Table  ////////////////
+//////////////////////////////////////////////////////////////////////////////////
 
 
 class EnhancedTableHead extends React.Component {
@@ -125,6 +134,7 @@ class EnhancedTableHead extends React.Component {
   render() {
     const { order, orderBy } = this.props;
 
+    //Returing Table Head
     return (
       <TableHead id="tableHead">
         <TableRow>
@@ -138,6 +148,7 @@ class EnhancedTableHead extends React.Component {
                 padding={row.disablePadding ? 'none' : 'default'}
                 sortDirection={orderBy === row.id ? order : false}
               >
+                {/*Sorting Of Table*/}
                 <Tooltip
                   title="Sort"
                   placement={row.numeric ? 'bottom-end' : 'bottom-start'}
@@ -170,6 +181,15 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
+  ////////////////////////////////////////////////////////////////////////////////
+ /////////////////   End Of Enhanced Table Head On Top Of Table  ////////////////
+////////////////////////////////////////////////////////////////////////////////
+
+  //////////////////////////////////////////////////////////////////////////////////////
+ /////////////////   Start Of Enhanced Table Tool Bar On Top Of Table  ////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+
+//Material UI Style
 const toolbarStyles = theme => ({
   root: {
     paddingRight: theme.spacing.unit,
@@ -198,18 +218,22 @@ const toolbarStyles = theme => ({
 let EnhancedTableToolbar = props => {
   const { numSelected, classes } = props;
 
+  //Returning The Tool Bar On Top of Table
   return (
+    //Tool Bar
     <Toolbar id="Toolbar"
       className={classNames(classes.root, {
         [classes.highlight]: numSelected > 0,
       })}
     >
+      {/*Once a Tool Is Selected Table Header*/}
       <div className={classes.title} id="selectedSubtitle">
         {numSelected > 0 ? (
           <Typography color="inherit" variant="subtitle1">
             {numSelected} selected
 </Typography>
         ) : (
+          //Table Header
             <Typography variant="h6" id="toolsForRent" >
               <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/the-home-depot-1-logo.png" id="homeDepotIcon" alt=""></img>
               Tools For Rent
@@ -218,13 +242,15 @@ let EnhancedTableToolbar = props => {
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions} >
+      {/*Number Of Tools Selected*/}
         {numSelected > 0 ? (
           <Tooltip title="Payment">
-            <IconButton aria-label="Payment">
+            <IconButton aria-label="Payment" data-toggle="modal" data-target="#reviewModal">
               <PaymentIcon />
             </IconButton>
           </Tooltip>
         ) : (
+        //Fiter Tools Button (For Future Development)
             <Tooltip title="Filter list">
               <IconButton aria-label="Filter list">
                 <FilterListIcon />
@@ -243,6 +269,11 @@ EnhancedTableToolbar.propTypes = {
 
 EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
+  ////////////////////////////////////////////////////////////////////////////////////
+ /////////////////   End Of Enhanced Table Tool Bar On Top Of Table  ////////////////
+////////////////////////////////////////////////////////////////////////////////////
+
+//Material UI Style
 const styles = theme => ({
   root: {
     width: '100%',
@@ -256,6 +287,7 @@ const styles = theme => ({
   },
 });
 
+//Enhanced Table Data
 class EnhancedTable extends React.Component {
   state = {
     order: 'asc',
@@ -289,6 +321,7 @@ class EnhancedTable extends React.Component {
     rowsPerPage: 10,
   };
 
+  //Function For Handling Sorting of Table
   handleRequestSort = (event, property) => {
     const orderBy = property;
     let order = 'desc';
@@ -300,14 +333,7 @@ class EnhancedTable extends React.Component {
     this.setState({ order, orderBy });
   };
 
-  handleSelectAllClick = event => {
-    if (event.target.checked) {
-      this.setState(state => ({ selected: state.data.map(n => n.id) }));
-      return;
-    }
-    this.setState({ selected: [] });
-  };
-
+  //Function For Handling Click of Selected Tool
   handleClick = (event, id) => {
     const { selected } = this.state;
     const selectedIndex = selected.indexOf(id);
@@ -329,10 +355,12 @@ class EnhancedTable extends React.Component {
     this.setState({ selected: newSelected });
   };
 
+  //Function For Handling Changing Page of Table
   handleChangePage = (event, page) => {
     this.setState({ page });
   };
 
+  //Function For Handing Changing Amount of Rows Per Page
   handleChangeRowsPerPage = event => {
     this.setState({ rowsPerPage: event.target.value });
   };
@@ -345,13 +373,61 @@ class EnhancedTable extends React.Component {
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
 
-
+  //////////////////////////////////////////////////////////////////////////////////////////////////////
+ /////////////////   Start Of Image Slider, Tool Table, And Gallery On Page  //////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////
     return (
-      <div id="wholeRentalSearch">
+      /*Whole Content Div*/
+      <div id="wholeContent">
+      {/*Whole Image Slider Div>*/}
+      <div id="wholeSlider">
+      <hr/>
+            {/*Image Slider Div*/}
+            <div id="slider">
+            {/*Slide For Individual Image*/}
+              <div class="slide">
+              {/*Images for Slider*/}
+                <img class="sliderImages" src="https://i.ytimg.com/vi/gFHdmMl0tR4/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/s6y89SV3PY8/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/78I2mBBRiLY/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/2JLtTCfL9To/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/7CqKL5zteZs/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/b5O9ES_YvjE/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/6CzYn8y7bb8/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/gUgUiN2qPTE/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/BzKBrtRxh6Q/maxresdefault.jpg" alt="img" />
+              </div>
+              <div class="slide">
+                <img class="sliderImages" src="https://i.ytimg.com/vi/vnAaP1dJndo/maxresdefault.jpg" alt="img" />
+              </div>
+            </div>
+          <hr/>
+        {/*Whole Rental Search Div*/}
+        <div id="wholeRentalSearch">
+        {/*Paper*/}
         <Paper className={classes.root} id="Paper">
+        {/*Enhanced Table Toolbar*/}
           <EnhancedTableToolbar numSelected={selected.length} />
+          {/*Search Bar*/}
           <div class="search">
             <SearchIcon id="searchIcon" />
+            {/*JS For Search Bar*/}
             <input type="text" id="searchField" onChange={function searchFunction() {
               // Declare variables 
               var input, filter, table, tr, th, i, txtValue;
@@ -375,22 +451,28 @@ class EnhancedTable extends React.Component {
             }} placeholder="Search for tools ex. 'Lawn Mower'...">
             </input>
           </div>
+          {/*Table Wrapper*/}
           <div className={classes.tableWrapper}>
+          {/*Tool Table*/}
             <Table className={classes.table} aria-labelledby="tableTitle" id="table">
+            {/*Enhanced Table Head*/}
               <EnhancedTableHead id="tableHead"
                 numSelected={selected.length}
                 order={order}
                 orderBy={orderBy}
-                onSelectAllClick={this.handleSelectAllClick}
                 onRequestSort={this.handleRequestSort}
                 rowCount={data.length}
               />
+
+              {/*Table Body*/}
               <TableBody id="tableBody">
+              {/*JS for Sorting Table*/}
                 {stableSort(data, getSorting(order, orderBy))
                   .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                   .map(n => {
                     const isSelected = this.isSelected(n.id);
                     return (
+                      //Returning Table Rows
                       <TableRow id="tableRow"
                         hover
                         onClick={event => this.handleClick(event, n.id)}
@@ -400,16 +482,25 @@ class EnhancedTable extends React.Component {
                         key={n.id}
                         selected={isSelected}
                       >
+                        {/*Table Cells*/}
+                        {/*CheckBox Cell*/}
                         <TableCell padding="checkbox" id="checkbox">
                           <Checkbox checked={isSelected} id="checkedBox" />
                         </TableCell>
+                        {/*Adding Data To Table*/}
+                        {/*Name Column*/}
                         <TableCell component="th" scope="row" padding="none">
                           {n.name}
                         </TableCell>
+                        {/*Catagory Column*/}
                         <TableCell align="left">{n.catagory}</TableCell>
+                        {/*Four Hour Column*/}
                         <TableCell align="right">{"$" + n.four_hour + ".00"}</TableCell>
+                        {/*Daily Column*/}
                         <TableCell align="right">{"$" + n.daily + ".00"}</TableCell>
+                        {/*Two Days Column*/}
                         <TableCell align="right">{"$" + n.daily * 2 + ".00"}</TableCell>
+                        {/*Deposit Colum*/}
                         <TableCell align="right">{"$" + n.deposit + ".00"}</TableCell>
                       </TableRow>
                     );
@@ -422,15 +513,20 @@ class EnhancedTable extends React.Component {
               </TableBody>
             </Table>
           </div>
+
+          {/*Table Pagination*/}
           <TablePagination id="tablePagination"
+            //Number of Results Per Page
             rowsPerPageOptions={[10, 15, 20, 25, 50]}
             component="div"
             count={data.length}
             rowsPerPage={rowsPerPage}
             page={page}
+            //Back Button
             backIconButtonProps={{
               'aria-label': 'Previous Page',
             }}
+            //Next Button
             nextIconButtonProps={{
               'aria-label': 'Next Page',
             }}
@@ -438,14 +534,19 @@ class EnhancedTable extends React.Component {
             onChangeRowsPerPage={this.handleChangeRowsPerPage}
           />
         </Paper>
+
+        {/*Whole Gallery Div*/}
         <div id="wholeGallery">
           <Gallery>
+            {/*Gallery Div*/}
             <div id="gallery">
               <hr></hr>
+              {/*Outdoor Rental Image*/}
               <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/outdoor-tool-rental-baked-sub-hero.jpg" alt="outdoorTool" height="30%" width="50%"></img>
+              {/*Indoor Rental Image*/}
               <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/indoor-tool-rental-baked-sub-hero.jpg" alt="indoorTool" height="30%" width="50%"></img>
               <hr></hr>
-
+              {/*Links To Home Depot Website*/}
               <ul id="links">
                 <li id="find"><a href="https://www.homedepot.com/l/search/3602/full/">
                   | Find a Store |
@@ -465,20 +566,23 @@ class EnhancedTable extends React.Component {
                 </li>
               </ul>
             </div>
-
           </Gallery>
         </div>
+
+      </div>
+      </div>
       </div>
     );
   }
 }
 
+
 EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-
-
-
+  /////////////////////////////////////////////////////////////////////////////////////////////////////
+ /////////////////     End Of Image Slider, Tool Table, And Gallery On Page   ////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export default withStyles(styles)(EnhancedTable);

@@ -88,3 +88,29 @@ body {
 a{
     color: lightgrey;
 }
+
+#wholeSlider{
+    padding:20px;
+    margin: auto;
+}
+
+#slider {
+    width: 100%;
+    height: 400px;
+    background-color: black;
+    overflow: auto;
+    white-space: nowrap;
+    margin: auto;
+    display: block;
+}
+
+.slide {
+    display: inline-block;
+    margin: auto;
+    width: 630px;
+}
+
+.sliderImages {
+    height: 360px;
+    margin: auto;
+}
