@@ -3,13 +3,13 @@ const db = require('../../models')
 
 router.route("/").post(function(req,res){
     db.User
-        .remove({})
         .create(req.body)
         .then(dbModel => res.json(dbModel))
         .catch(err => {
         console.log(err);
         res.status(422).json({"error": "something went wrong"});
         });
+        console.log(req.body)
 })
 
 router.route("/:name").get(function(req,res){
