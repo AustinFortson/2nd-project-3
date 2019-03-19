@@ -1,5 +1,6 @@
 import React from 'react'
 import API from "../utils/API";
+import { Redirect } from 'react-router-dom'
 import {Form,Row,Inputs12,Inputs6,Inputs4,Submit} from "../components/Form/index"
 class UserInput extends React.Component {
   constructor(props){
@@ -16,10 +17,13 @@ class UserInput extends React.Component {
       nameDOB:'',
       nameDriverNum:'',
       nameDriverExp:'',
-      nameDriverState:''
+      nameDriverState:'',
+      redirect:true
       }
       this.handleSubmit = this.handleSubmit.bind(this);
       this.handleChange = this.handleChange.bind(this);
+      this.renderRedirect = this.renderRedirect.bind(this);
+
   }
   componentDidMount(){
 
@@ -29,9 +33,14 @@ class UserInput extends React.Component {
     const {name,value}  = event.target;
     this.setState({[name]: value})
   }
+  renderRedirect() {
+    if (this.state.redirect) {
+      return <Redirect to='/search/' />
+    }
+  }
   handleSubmit(event){
     event.preventDefault();
-    if (this.state.nameFirst && this.state.nameLast) {
+    if (this.state.nameFirst && this.state.nameLast ) {
       API.saveUser({
         nameFirst: this.state.nameFirst,
         nameLast: this.state.nameLast,
@@ -43,14 +52,15 @@ class UserInput extends React.Component {
         nameDOB: this.state.nameDOB,
         nameDriverNum: this.state.nameDriverNum,
         nameDriverExp: this.state.nameDriverExp,
-        nameDriverState: this.nameDriverState
+        nameDriverState: this.state.nameDriverState
         })
-        .then(res => this.setState({userdata: res.data}))
+        .then(res => this.setState({userdata: res.data, redirect: true}))
         .catch(err => console.log(err));
     }
   }
     
   render() {
+    console.log(this.state.nameDriverState)
 
     return( <div>
       <h1>Users</h1>
@@ -70,11 +80,12 @@ class UserInput extends React.Component {
         <Row>
           <Inputs12 placehold="Email" type="email" name="nameEmail" value={this.state.nameEmail} handleChange={this.handleChange}/>
         </Row>
-        <Row>
+        <Row><label>Date of Birth</label>
         <Inputs4 placehold="Date of Birth" type="date" name="nameDOB" value={this.state.nameDOB} handleChange={this.handleChange}/>
         </Row>
         <Row>
           <Inputs4 placehold="Driver License Number" type="number" name="nameDriverNum" value={this.state.nameDriverNum} handleChange={this.handleChange}/>
+          <label>Driver License Expiration Date</label>
           <Inputs4 placehold="Driver License Expiration Date" type="date" name="nameDriverExp" value={this.state.nameDriverExp} handleChange={this.handleChange}/>
           <Inputs4 placehold="Driver License State" type="text" name="nameDriverState" value={this.state.nameDriverState} handleChange={this.handleChange}/>
         </Row>
