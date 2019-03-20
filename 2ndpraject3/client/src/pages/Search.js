@@ -289,7 +289,9 @@ class EnhancedTable extends React.Component {
     rowsPerPage: 10,
     cartitem:[]
   };
-
+componentDidMount(){
+  
+}
 
   handleRequestSort = (event, property) => {
     const orderBy = property;
@@ -356,6 +358,8 @@ class EnhancedTable extends React.Component {
     })
     
     this.setState({cartitem: newcart})
+    var localcart = {data: this.state.cartitem}
+    localStorage.setItem('cart',JSON.stringify(localcart))
     console.log(this.state.cartitem)
   }
 
@@ -366,14 +370,14 @@ class EnhancedTable extends React.Component {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
-    data.map(n=>{
+    // data.map(n=>{
 
-      for(var i=0;i<selected.length;i++)
-      if(n.id=== selected[i]){
-        console.log(n)
+    //   for(var i=0;i<selected.length;i++)
+    //   if(n.id=== selected[i]){
+    //     console.log(n)
 
-      }
-    })
+    //   }
+    // })
     return (
       <div id="wholeRentalSearch">
         <Paper className={classes.root} id="Paper">
