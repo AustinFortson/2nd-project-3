@@ -1,5 +1,5 @@
 body {
-    background-color:grey;
+    background-color: black;
 }
 
 #wholeRentalSearch {
@@ -114,3 +114,25 @@ a{
     height: 360px;
     margin: auto;
 }
+
+/* width */
+::-webkit-scrollbar {
+    color: transparent
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #F96302; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #F92405; 
+  }

@@ -245,9 +245,11 @@ let EnhancedTableToolbar = props => {
       {/*Number Of Tools Selected*/}
         {numSelected > 0 ? (
           <Tooltip title="Payment">
-            <IconButton aria-label="Payment" data-toggle="modal" data-target="#reviewModal">
+            <a href="#paymentModal">
+            <IconButton aria-label="Payment">
               <PaymentIcon />
             </IconButton>
+            </a>
           </Tooltip>
         ) : (
         //Fiter Tools Button (For Future Development)
@@ -372,6 +374,7 @@ class EnhancedTable extends React.Component {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
+    console.log(selected);
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////
  /////////////////   Start Of Image Slider, Tool Table, And Gallery On Page  //////////////////////////
