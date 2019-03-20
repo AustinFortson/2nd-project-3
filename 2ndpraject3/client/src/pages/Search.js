@@ -71,6 +71,7 @@ import Tooltip from '@material-ui/core/Tooltip';
 import PaymentIcon from '@material-ui/icons/Payment';
 import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
+import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import API from "../utils/API";
 import "./index.css";
@@ -242,23 +243,6 @@ let EnhancedTableToolbar = props => {
       </div>
       <div className={classes.spacer} />
       <div className={classes.actions} >
-      {/*Number Of Tools Selected*/}
-        {numSelected > 0 ? (
-          <Tooltip title="Payment">
-            <a href="#paymentModal">
-            <IconButton aria-label="Payment">
-              <PaymentIcon />
-            </IconButton>
-            </a>
-          </Tooltip>
-        ) : (
-        //Fiter Tools Button (For Future Development)
-            <Tooltip title="Filter list">
-              <IconButton aria-label="Filter list">
-                <FilterListIcon />
-              </IconButton>
-            </Tooltip>
-          )}
       </div>
     </Toolbar>
   );
@@ -321,6 +305,7 @@ class EnhancedTable extends React.Component {
     ],
     page: 0,
     rowsPerPage: 10,
+    cartitem:[]
   };
 
   //Function For Handling Sorting of Table
@@ -369,12 +354,42 @@ class EnhancedTable extends React.Component {
 
   isSelected = id => this.state.selected.indexOf(id) !== -1;
 
+  //Function for handling cart
+  handleCart = () => {
+    let newcart = []
+    if(!this.state.selected){
+      this.setState({cartitem:''})
+    }
+    if(this.state.selected.length < this.state.cartitem.length){
+      this.setState({cartitem:''})
+    }
+    
+    this.state.data.map(n=>{
+      for(var i=0;i<this.state.selected.length;i++)
+      if(n.id=== this.state.selected[i]){
+        newcart.push(n)
+      }
+    })
+    
+    this.setState({cartitem: newcart})
+    console.log(this.state.cartitem)
+  }
+
 
   render() {
     const { classes } = this.props;
     const { data, order, orderBy, selected, rowsPerPage, page } = this.state;
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
     console.log(selected);
+
+    data.map(n=>{
+
+      for(var i=0;i<selected.length;i++)
+      if(n.id=== selected[i]){
+        console.log(n)
+
+      }
+    })
 
   //////////////////////////////////////////////////////////////////////////////////////////////////////
  /////////////////   Start Of Image Slider, Tool Table, And Gallery On Page  //////////////////////////
@@ -423,6 +438,9 @@ class EnhancedTable extends React.Component {
           <hr/>
         {/*Whole Rental Search Div*/}
         <div id="wholeRentalSearch">
+        <IconButton onClick={this.handleCart} aria-label="Filter list" id="ShoppingCart">
+                <ShoppingCart />
+              </IconButton>
         {/*Paper*/}
         <Paper className={classes.root} id="Paper">
         {/*Enhanced Table Toolbar*/}
@@ -571,7 +589,6 @@ class EnhancedTable extends React.Component {
             </div>
           </Gallery>
         </div>
-
       </div>
       </div>
       </div>
