@@ -68,14 +68,15 @@ import Paper from '@material-ui/core/Paper';
 import Checkbox from '@material-ui/core/Checkbox';
 import IconButton from '@material-ui/core/IconButton';
 import Tooltip from '@material-ui/core/Tooltip';
-import PaymentIcon from '@material-ui/icons/Payment';
-import FilterListIcon from '@material-ui/icons/FilterList';
 import SearchIcon from '@material-ui/icons/Search';
 import ShoppingCart from '@material-ui/icons/ShoppingCart';
 import { lighten } from '@material-ui/core/styles/colorManipulator';
 import API from "../utils/API";
 import "./index.css";
-import Gallery from "../components/gallery/index"
+import Gallery from "../components/gallery/index";
+
+
+
 
 
 let counter = 0;
@@ -438,9 +439,11 @@ class EnhancedTable extends React.Component {
           <hr/>
         {/*Whole Rental Search Div*/}
         <div id="wholeRentalSearch">
-        <IconButton onClick={this.handleCart} aria-label="Filter list" id="ShoppingCart">
-                <ShoppingCart />
-              </IconButton>
+
+        {/*Cart Button*/}
+        <IconButton onClick={this.handleCart} aria-label="Filter list" id="ShoppingCart" href="/review">
+              <ShoppingCart />
+          </IconButton>
         {/*Paper*/}
         <Paper className={classes.root} id="Paper">
         {/*Enhanced Table Toolbar*/}
@@ -589,6 +592,7 @@ class EnhancedTable extends React.Component {
             </div>
           </Gallery>
         </div>
+
       </div>
       </div>
       </div>
