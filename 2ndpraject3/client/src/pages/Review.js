@@ -39,9 +39,9 @@ class Review extends React.Component {
     <label>
           Pick your rental time
           <select value={this.state.value} onChange={this.handleChange}>
-            <option value="4">Grapefruit</option>
-            <option value="24">Lime</option>
-            <option value="48">Coconut</option>
+            <option value="4">4 hours</option>
+            <option value="24">1 day</option>
+            <option value="48">2 days</option>
           </select>
         </label>
       
