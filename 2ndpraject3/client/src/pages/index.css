@@ -1,13 +1,34 @@
 body {
-    background-color:grey;
+    background-color: black;
 }
+
+::-webkit-scrollbar {
+    color: transparent
+  }
+  
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  ::-webkit-scrollbar-thumb {
+    background: #F96302; 
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #F92405; 
+  }
+
+  /*-------------------*/
+ /*SEARCH PAGE STYLING*/
+/*-------------------*/
+
 
 #wholeRentalSearch {
     margin: auto;
     width: 99%;
-    border-style: solid;
-    border-width: 1px;
-    border-color: black;
+    border: 1px solid black;
     background-color: #F96302;
 }
 
@@ -114,3 +135,97 @@ a{
     height: 360px;
     margin: auto;
 }
+
+#ShoppingCart {
+    background-color: rgba(249, 101, 2, 0.801);
+    color: black;
+    position: fixed;
+    top: 90%;
+    left: 89%;
+    height: 50px;
+    width: 50px;
+
+}
+
+
+  /*-----------------*/
+ /*USER PAGE STYLING*/
+/*-----------------*/
+#wholeForm{
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+#userForm {
+    background-color: #eee;
+    padding: 20px;
+    border: 1px solid black
+}
+
+#UserLogo {
+    height: 100px;
+    width: 100px;
+}
+
+
+#LogoDiv {
+    width: 100%;
+    height: 80px;
+    background-color: gray;
+    margin-bottom: 40px;
+}
+
+#headerLow{
+    width:100%;
+    height: 30px;
+    background-color: black;
+    border-bottom: 5px solid #F96302;
+
+}
+
+::placeholder {
+    color: gray;
+}
+
+.input-field {
+    border-left: 3px solid #F96302
+}
+
+#submitButton {
+    background-color: #F96302;
+}
+
+  /*--------------------*/
+ /*Welcome Page STYLING*/
+/*--------------------*/
+#welcomeBG {
+    background-color: white;
+    height: 100%;
+    width: 100%;
+ }
+ #welcomeH {
+    align-content: center;
+    margin: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+ 
+    height: 250px;
+    width: 100%;
+ 
+    padding-left:100px;
+    padding-right: 100px;
+ 
+ }
+ #getStart {
+    padding-left: 100px;
+    padding-right: 100px;
+    text-align: center;
+    margin-bottom: 130px;
+    padding: 18px;
+ }
+
+ #getStarted {
+     background-color: #f96302;
+ }

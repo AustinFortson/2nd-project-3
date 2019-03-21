@@ -2,6 +2,7 @@ import React from 'react'
 import API from "../utils/API";
 import { Redirect } from 'react-router-dom'
 import {Form,Row,Inputs12,Inputs6,Inputs4,Submit} from "../components/Form/index"
+import { Modal } from '@material-ui/core';
 class UserInput extends React.Component {
   constructor(props){
     super(props);
@@ -62,8 +63,17 @@ class UserInput extends React.Component {
   render() {
     console.log(this.state.nameDriverState)
 
-    return( <div>
-      <h1>Users</h1>
+    return( <div id="wholeForm">
+      {/*Tool Rental Logo*/}
+      <div id="LogoDiv">
+      <img src="https://compactpowerrents.com/media/2300/logo_cperrent.png" alt="ToolRentalLogo" id="ToolRentalLogo"/>
+      <div id="headerLow"></div>
+      </div>
+
+      <div class="container" id="userForm">
+      {/*User Logo*/}
+      <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/Truck_Rental/do-qualify.gif" alt="UserLogo" id="UserLogo"/>
+      <h5>Enter Your Information Below and Click Submit</h5>
       <Form>
         <Row>
           <Inputs6 placehold="First Name" name="nameFirst" type="text" value={this.state.nameFirst} handleChange={this.handleChange}/>
@@ -89,8 +99,9 @@ class UserInput extends React.Component {
           <Inputs4 placehold="Driver License Expiration Date" type="date" name="nameDriverExp" value={this.state.nameDriverExp} handleChange={this.handleChange}/>
           <Inputs4 placehold="Driver License State" type="text" name="nameDriverState" value={this.state.nameDriverState} handleChange={this.handleChange}/>
         </Row>
-        <Submit handleSubmit={this.handleSubmit}/>
+        <Submit handleSubmit={this.handleSubmit} href="/search"/>
       </Form>
+      </div>
         </div>
         )
   }
