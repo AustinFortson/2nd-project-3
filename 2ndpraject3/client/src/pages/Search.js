@@ -123,8 +123,8 @@ const rows = [
   { id: 'deposit', numeric: true, disablePadding: false, label: 'Deposit' },
 ];
 
-  //////////////////////////////////////////////////////////////////////////////////
- /////////////////   Start Of Enhanced Table Head On Top Of Table  ////////////////
+//////////////////////////////////////////////////////////////////////////////////
+/////////////////   Start Of Enhanced Table Head On Top Of Table  ////////////////
 //////////////////////////////////////////////////////////////////////////////////
 
 
@@ -183,12 +183,12 @@ EnhancedTableHead.propTypes = {
   rowCount: PropTypes.number.isRequired,
 };
 
-  ////////////////////////////////////////////////////////////////////////////////
- /////////////////   End Of Enhanced Table Head On Top Of Table  ////////////////
+////////////////////////////////////////////////////////////////////////////////
+/////////////////   End Of Enhanced Table Head On Top Of Table  ////////////////
 ////////////////////////////////////////////////////////////////////////////////
 
-  //////////////////////////////////////////////////////////////////////////////////////
- /////////////////   Start Of Enhanced Table Tool Bar On Top Of Table  ////////////////
+//////////////////////////////////////////////////////////////////////////////////////
+/////////////////   Start Of Enhanced Table Tool Bar On Top Of Table  ////////////////
 //////////////////////////////////////////////////////////////////////////////////////
 
 //Material UI Style
@@ -235,7 +235,7 @@ let EnhancedTableToolbar = props => {
             {numSelected} selected
 </Typography>
         ) : (
-          //Table Header
+            //Table Header
             <Typography variant="h6" id="toolsForRent" >
               <img src="https://cdn.freebiesupply.com/logos/thumbs/2x/the-home-depot-1-logo.png" id="homeDepotIcon" alt=""></img>
               Tools For Rent
@@ -256,8 +256,8 @@ EnhancedTableToolbar.propTypes = {
 
 EnhancedTableToolbar = withStyles(toolbarStyles)(EnhancedTableToolbar);
 
-  ////////////////////////////////////////////////////////////////////////////////////
- /////////////////   End Of Enhanced Table Tool Bar On Top Of Table  ////////////////
+////////////////////////////////////////////////////////////////////////////////////
+/////////////////   End Of Enhanced Table Tool Bar On Top Of Table  ////////////////
 ////////////////////////////////////////////////////////////////////////////////////
 
 //Material UI Style
@@ -282,31 +282,31 @@ class EnhancedTable extends React.Component {
     selected: [],
     data: [
       createData('Bolt Cutter 36"', "Cutting and Concrete", 8, 12, 25),
-      createData('Bull Float', "Cutting and Concrete", 12, 17, 259),
-      createData('11 LB Demolition Hammer', "Drills and Hammers", 16, 24, 6),
-      createData("18V Cordless Drill", "Drills and Hammers", 6, 24, 4),
-      createData('3000 Watt Generator', "Generators", 16, 49, 3),
-      createData('6500 Watt Generator', "Generators", 3, 87, 6),
-      createData('Auto-Feed Drain Cleaner 100 x 5/8', "Plumbing and Pumps", 9, 37, 4),
-      createData('Auto-Feed Drain Cleaner 50 x 1/2', "Plumbing and Pumps", 0, 94, 0),
-      createData('20V Brad Nailer', "Fastening and Welding", 26, 65, 7),
-      createData('20V Finish Nailer', "Fastening and Welding", 2, 98, 10),
-      createData('Jumping Jack', "Compactors", 52, 81, 2),
-      createData('Manual Tamper', "Compactors", 19, 9, 37),
-      createData('20V Cordless Paint Sprayer', "Painting and Decorating", 18, 63, 4),
-      createData('Electric Wallpaper Steamer', "Painting and Decorating", 18, 63, 4),
-      createData('1 Man Auger', "Lawn and Garden", 0, 81, 2),
-      createData('13in Landscape Trencher', "Lawn and Garden", 19, 9, 37),
-      createData('Belt Sander', "Floor Care and Sanding", 18, 63, 4),
-      createData('Carpet Blower', "Floor Care and Sanding", 18, 63, 4),
-      createData('150K-200K BTU Kerosene Heater', "Other", 16, 24, 6),
-      createData("18in Trencher Mechanical", "Other", 6, 24, 5),
-      createData('10 high w/base plates-1 5/8', "Scaffolding", 16, 49, 3),
-      createData('10 high w/casters -1 5/8', "Scaffolding", 3, 87, 6)
+      createData('Bull Float', "Cutting and Concrete", 12, 17, 25),
+      createData('11 LB Demolition Hammer', "Drills and Hammers", 39, 56, 50),
+      createData("18V Cordless Drill", "Drills and Hammers", 18, 25, 50),
+      createData('3000 Watt Generator', "Generators", 43, 62, 250),
+      createData('6500 Watt Generator', "Generators", 57, 82, 250),
+      createData('Auto-Feed Drain Cleaner 100 x 5/8', "Plumbing and Pumps", 67, 96, 100),
+      createData('Auto-Feed Drain Cleaner 50 x 1/2', "Plumbing and Pumps", 48, 69, 100),
+      createData('20V Brad Nailer', "Fastening and Welding", 20, 29, 75),
+      createData('20V Finish Nailer', "Fastening and Welding", 27, 39, 50),
+      createData('Jumping Jack', "Compactors", 67, 95, 150),
+      createData('Manual Tamper', "Compactors", 7, 10, 10),
+      createData('20V Cordless Paint Sprayer', "Painting and Decorating", 26, 37, 148),
+      createData('Electric Wallpaper Steamer', "Painting and Decorating", 26, 37, 148),
+      createData('1 Man Auger', "Lawn and Garden", 54, 77, 100),
+      createData('13in Landscape Trencher', "Lawn and Garden", 78, 111, 250),
+      createData('Belt Sander', "Floor Care and Sanding", 17, 24, 50),
+      createData('Carpet Blower', "Floor Care and Sanding", 17, 24, 25),
+      createData('150K-200K BTU Kerosene Heater', "Other", 33, 47, 50),
+      createData("18in Trencher Mechanical", "Other", 60, 86, 150),
+      createData('10 high w/base plates-1 5/8', "Scaffolding", 40, 57, 150),
+      createData('10 high w/casters -1 5/8', "Scaffolding", 43, 61, 150)
     ],
     page: 0,
     rowsPerPage: 10,
-    cartitem:[]
+    cartitem: []
   };
 
   //Function For Handling Sorting of Table
@@ -358,21 +358,21 @@ class EnhancedTable extends React.Component {
   //Function for handling cart
   handleCart = () => {
     let newcart = []
-    if(!this.state.selected){
-      this.setState({cartitem:''})
+    if (!this.state.selected) {
+      this.setState({ cartitem: '' })
     }
-    if(this.state.selected.length < this.state.cartitem.length){
-      this.setState({cartitem:''})
+    if (this.state.selected.length < this.state.cartitem.length) {
+      this.setState({ cartitem: '' })
     }
-    
-    this.state.data.map(n=>{
-      for(var i=0;i<this.state.selected.length;i++)
-      if(n.id=== this.state.selected[i]){
-        newcart.push(n)
-      }
+
+    this.state.data.map(n => {
+      for (var i = 0; i < this.state.selected.length; i++)
+        if (n.id === this.state.selected[i]) {
+          newcart.push(n)
+        }
     })
-    
-    this.setState({cartitem: newcart})
+
+    this.setState({ cartitem: newcart })
     console.log(this.state.cartitem)
   }
 
@@ -383,218 +383,266 @@ class EnhancedTable extends React.Component {
     const emptyRows = rowsPerPage - Math.min(rowsPerPage, data.length - page * rowsPerPage);
     console.log(selected);
 
-    data.map(n=>{
+    data.map(n => {
 
-      for(var i=0;i<selected.length;i++)
-      if(n.id=== selected[i]){
-        console.log(n)
+      for (var i = 0; i < selected.length; i++)
+        if (n.id === selected[i]) {
+          console.log(n)
+          document.getElementById('modalContent').innerHTML =
+            (n.name + "<br>"
+              + "4 Hours: $" + n.four_hour + "<br>"
+              + "24 Hours: $" + n.daily + "<br>"
+              + "2 Days: $" + n.daily*2 + "<br>"
+              + "Deposit: $" + n.deposit + "<br>"
+              + "_______________________________")
 
-      }
+        }
     })
 
-  //////////////////////////////////////////////////////////////////////////////////////////////////////
- /////////////////   Start Of Image Slider, Tool Table, And Gallery On Page  //////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////   Start Of Image Slider, Tool Table, And Gallery On Page  //////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////
     return (
       /*Whole Content Div*/
       <div id="wholeContent">
-      {/*Whole Image Slider Div>*/}
-      <div id="wholeSlider">
-      <hr/>
-            {/*Image Slider Div*/}
-            <div id="slider">
+        {/*Whole Image Slider Div>*/}
+        <div id="wholeSlider">
+          <hr />
+          {/*Image Slider Div*/}
+          <div id="slider">
             {/*Slide For Individual Image*/}
-              <div class="slide">
+            <div class="slide">
               {/*Images for Slider*/}
-                <img class="sliderImages" src="https://i.ytimg.com/vi/gFHdmMl0tR4/maxresdefault.jpg" alt="img" />
+              <img class="sliderImages" src="https://i.ytimg.com/vi/gFHdmMl0tR4/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/s6y89SV3PY8/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/78I2mBBRiLY/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/2JLtTCfL9To/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/7CqKL5zteZs/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/b5O9ES_YvjE/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/6CzYn8y7bb8/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/gUgUiN2qPTE/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/BzKBrtRxh6Q/maxresdefault.jpg" alt="img" />
+            </div>
+            <div class="slide">
+              <img class="sliderImages" src="https://i.ytimg.com/vi/vnAaP1dJndo/maxresdefault.jpg" alt="img" />
+            </div>
+          </div>
+          <hr />
+          {/*Whole Rental Search Div*/}
+          <div id="wholeRentalSearch">
+
+            {/*Modal*/}
+            <div id="modal" class="modal">
+              {/*Modal Header*/}
+              <div id="modal-header" class="modal-header">
+                <span class="close" id="close">X</span>
+                <h4>Tools In Cart</h4>
+                </div>
+                {/*Modal Content*/}
+              <div id="modalContent"></div>
+              {/*Modal Button*/}
+              <div id="modalButton">
+                <a href="/review">
+                <button class="btn waves-effect waves-light" id="paymentButton">Payment
+                  <i class="material-icons right">credit_card</i>
+                </button>
+                </a>
               </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/s6y89SV3PY8/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/78I2mBBRiLY/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/2JLtTCfL9To/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/7CqKL5zteZs/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/b5O9ES_YvjE/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/6CzYn8y7bb8/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/gUgUiN2qPTE/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/BzKBrtRxh6Q/maxresdefault.jpg" alt="img" />
-              </div>
-              <div class="slide">
-                <img class="sliderImages" src="https://i.ytimg.com/vi/vnAaP1dJndo/maxresdefault.jpg" alt="img" />
+              {/*Modal Footer*/}
+              <div id="modal-footer" class="modal-footer">
               </div>
             </div>
-          <hr/>
-        {/*Whole Rental Search Div*/}
-        <div id="wholeRentalSearch">
 
-        {/*Cart Button*/}
-        <IconButton onClick={this.handleCart} aria-label="Filter list" id="ShoppingCart" href="/review">
-              <ShoppingCart />
-          </IconButton>
-        {/*Paper*/}
-        <Paper className={classes.root} id="Paper">
-        {/*Enhanced Table Toolbar*/}
-          <EnhancedTableToolbar numSelected={selected.length} />
-          {/*Search Bar*/}
-          <div class="search">
-            <SearchIcon id="searchIcon" />
-            {/*JS For Search Bar*/}
-            <input type="text" id="searchField" onChange={function searchFunction() {
-              // Declare variables 
-              var input, filter, table, tr, th, i, txtValue;
-              input = document.getElementById("searchField");
-              filter = input.value.toUpperCase();
-              table = document.getElementById("tableBody");
-              tr = table.getElementsByTagName("tr");
+            {/*Cart Button*/}
+            <IconButton onClick={this.handleCart} aria-label="Filter list" id="ShoppingCart">
+              <ShoppingCart onClick={function openModal() {
+                var modal = document.getElementById('modal');
 
-              // Loop through all table rows, and hide those who don't match the search query
-              for (i = 0; i < tr.length; i++) {
-                th = tr[i].getElementsByTagName("th")[0];
-                if (th) {
-                  txtValue = th.textContent || th.innerText;
-                  if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    tr[i].style.display = "";
-                  } else {
-                    tr[i].style.display = "none";
-                  }
+                // Get the button that opens the modal
+                var btn = document.getElementById("ShoppingCart");
+
+                var span = document.getElementsByClassName("close")[0];
+
+                // When the user clicks on <span> (x), close the modal
+                span.onclick = function () {
+                  modal.style.display = "none";
                 }
-              }
-            }} placeholder="Search for tools ex. 'Lawn Mower'...">
-            </input>
-          </div>
-          {/*Table Wrapper*/}
-          <div className={classes.tableWrapper}>
-          {/*Tool Table*/}
-            <Table className={classes.table} aria-labelledby="tableTitle" id="table">
-            {/*Enhanced Table Head*/}
-              <EnhancedTableHead id="tableHead"
-                numSelected={selected.length}
-                order={order}
-                orderBy={orderBy}
-                onRequestSort={this.handleRequestSort}
-                rowCount={data.length}
-              />
 
-              {/*Table Body*/}
-              <TableBody id="tableBody">
-              {/*JS for Sorting Table*/}
-                {stableSort(data, getSorting(order, orderBy))
-                  .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-                  .map(n => {
-                    const isSelected = this.isSelected(n.id);
-                    return (
-                      //Returning Table Rows
-                      <TableRow id="tableRow"
-                        hover
-                        onClick={event => this.handleClick(event, n.id)}
-                        role="checkbox"
-                        aria-checked={isSelected}
-                        tabIndex={-1}
-                        key={n.id}
-                        selected={isSelected}
-                      >
-                        {/*Table Cells*/}
-                        {/*CheckBox Cell*/}
-                        <TableCell padding="checkbox" id="checkbox">
-                          <Checkbox checked={isSelected} id="checkedBox" />
-                        </TableCell>
-                        {/*Adding Data To Table*/}
-                        {/*Name Column*/}
-                        <TableCell component="th" scope="row" padding="none">
-                          {n.name}
-                        </TableCell>
-                        {/*Catagory Column*/}
-                        <TableCell align="left">{n.catagory}</TableCell>
-                        {/*Four Hour Column*/}
-                        <TableCell align="right">{"$" + n.four_hour + ".00"}</TableCell>
-                        {/*Daily Column*/}
-                        <TableCell align="right">{"$" + n.daily + ".00"}</TableCell>
-                        {/*Two Days Column*/}
-                        <TableCell align="right">{"$" + n.daily * 2 + ".00"}</TableCell>
-                        {/*Deposit Colum*/}
-                        <TableCell align="right">{"$" + n.deposit + ".00"}</TableCell>
+                // When the user clicks on the button, open the modal 
+                btn.onclick = function () {
+                  modal.style.display = "block";
+                }
+              }} />
+            </IconButton>
+            {/*Paper*/}
+            <Paper className={classes.root} id="Paper">
+              {/*Enhanced Table Toolbar*/}
+              <EnhancedTableToolbar numSelected={selected.length} />
+              {/*Search Bar*/}
+              <div class="search">
+                <SearchIcon id="searchIcon" />
+                {/*JS For Search Bar*/}
+                <input type="text" id="searchField" onChange={function searchFunction() {
+                  // Declare variables 
+                  var input, filter, table, tr, th, i, txtValue;
+                  input = document.getElementById("searchField");
+                  filter = input.value.toUpperCase();
+                  table = document.getElementById("tableBody");
+                  tr = table.getElementsByTagName("tr");
+
+                  // Loop through all table rows, and hide those who don't match the search query
+                  for (i = 0; i < tr.length; i++) {
+                    th = tr[i].getElementsByTagName("th")[0];
+                    if (th) {
+                      txtValue = th.textContent || th.innerText;
+                      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                      } else {
+                        tr[i].style.display = "none";
+                      }
+                    }
+                  }
+                }} placeholder="Search for tools ex. 'Lawn Mower'...">
+                </input>
+              </div>
+              {/*Table Wrapper*/}
+              <div className={classes.tableWrapper}>
+                {/*Tool Table*/}
+                <Table className={classes.table} aria-labelledby="tableTitle" id="table">
+                  {/*Enhanced Table Head*/}
+                  <EnhancedTableHead id="tableHead"
+                    numSelected={selected.length}
+                    order={order}
+                    orderBy={orderBy}
+                    onRequestSort={this.handleRequestSort}
+                    rowCount={data.length}
+                  />
+
+                  {/*Table Body*/}
+                  <TableBody id="tableBody">
+                    {/*JS for Sorting Table*/}
+                    {stableSort(data, getSorting(order, orderBy))
+                      .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+                      .map(n => {
+                        const isSelected = this.isSelected(n.id);
+                        return (
+                          //Returning Table Rows
+                          <TableRow id="tableRow"
+                            hover
+                            onClick={event => this.handleClick(event, n.id)}
+                            role="checkbox"
+                            aria-checked={isSelected}
+                            tabIndex={-1}
+                            key={n.id}
+                            selected={isSelected}
+                          >
+                            {/*Table Cells*/}
+                            {/*CheckBox Cell*/}
+                            <TableCell padding="checkbox" id="checkbox">
+                              <Checkbox checked={isSelected} id="checkedBox" />
+                            </TableCell>
+                            {/*Adding Data To Table*/}
+                            {/*Name Column*/}
+                            <TableCell component="th" scope="row" padding="none">
+                              {n.name}
+                            </TableCell>
+                            {/*Catagory Column*/}
+                            <TableCell align="left">{n.catagory}</TableCell>
+                            {/*Four Hour Column*/}
+                            <TableCell align="right">{"$" + n.four_hour + ".00"}</TableCell>
+                            {/*Daily Column*/}
+                            <TableCell align="right">{"$" + n.daily + ".00"}</TableCell>
+                            {/*Two Days Column*/}
+                            <TableCell align="right">{"$" + n.daily * 2 + ".00"}</TableCell>
+                            {/*Deposit Colum*/}
+                            <TableCell align="right">{"$" + n.deposit + ".00"}</TableCell>
+                          </TableRow>
+                        );
+                      })}
+                    {emptyRows > 0 && (
+                      <TableRow style={{ height: 49 * emptyRows }}>
+                        <TableCell colSpan={6} />
                       </TableRow>
-                    );
-                  })}
-                {emptyRows > 0 && (
-                  <TableRow style={{ height: 49 * emptyRows }}>
-                    <TableCell colSpan={6} />
-                  </TableRow>
-                )}
-              </TableBody>
-            </Table>
-          </div>
+                    )}
+                  </TableBody>
+                </Table>
+              </div>
 
-          {/*Table Pagination*/}
-          <TablePagination id="tablePagination"
-            //Number of Results Per Page
-            rowsPerPageOptions={[10, 15, 20, 25, 50]}
-            component="div"
-            count={data.length}
-            rowsPerPage={rowsPerPage}
-            page={page}
-            //Back Button
-            backIconButtonProps={{
-              'aria-label': 'Previous Page',
-            }}
-            //Next Button
-            nextIconButtonProps={{
-              'aria-label': 'Next Page',
-            }}
-            onChangePage={this.handleChangePage}
-            onChangeRowsPerPage={this.handleChangeRowsPerPage}
-          />
-        </Paper>
+              {/*Table Pagination*/}
+              <TablePagination id="tablePagination"
+                //Number of Results Per Page
+                rowsPerPageOptions={[10, 15, 20, 25, 50]}
+                component="div"
+                count={data.length}
+                rowsPerPage={rowsPerPage}
+                page={page}
+                //Back Button
+                backIconButtonProps={{
+                  'aria-label': 'Previous Page',
+                }}
+                //Next Button
+                nextIconButtonProps={{
+                  'aria-label': 'Next Page',
+                }}
+                onChangePage={this.handleChangePage}
+                onChangeRowsPerPage={this.handleChangeRowsPerPage}
+              />
+            </Paper>
 
-        {/*Whole Gallery Div*/}
-        <div id="wholeGallery">
-          <Gallery>
-            {/*Gallery Div*/}
-            <div id="gallery">
-              <hr></hr>
-              {/*Outdoor Rental Image*/}
-              <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/outdoor-tool-rental-baked-sub-hero.jpg" alt="outdoorTool" height="30%" width="50%"></img>
-              {/*Indoor Rental Image*/}
-              <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/indoor-tool-rental-baked-sub-hero.jpg" alt="indoorTool" height="30%" width="50%"></img>
-              <hr></hr>
-              {/*Links To Home Depot Website*/}
-              <ul id="links">
-                <li id="find"><a href="https://www.homedepot.com/l/search/3602/full/">
-                  | Find a Store |
+            {/*Whole Gallery Div*/}
+            <div id="wholeGallery">
+              <Gallery>
+                {/*Gallery Div*/}
+                <div id="gallery">
+                  <hr></hr>
+                  {/*Outdoor Rental Image*/}
+                  <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/outdoor-tool-rental-baked-sub-hero.jpg" alt="outdoorTool" height="30%" width="50%"></img>
+                  {/*Indoor Rental Image*/}
+                  <img src="https://contentgrid.homedepot-static.com/hdus/en_US/DTCCOMNEW/fetch/Enterprise/Tool_and_Truck_Rental/indoor-tool-rental-baked-sub-hero.jpg" alt="indoorTool" height="30%" width="50%"></img>
+                  <hr></hr>
+                  {/*Links To Home Depot Website*/}
+                  <ul id="links">
+                    <li id="find"><a href="https://www.homedepot.com/l/search/3602/full/">
+                      | Find a Store |
                 </a>
-                </li>
-                <li id="find"><a href="https://www.homedepot.com/c/tool_and_truck_rental">
-                  | More Tool Info |
+                    </li>
+                    <li id="find"><a href="https://www.homedepot.com/c/tool_and_truck_rental">
+                      | More Tool Info |
                 </a>
-                </li>
-                <li id="find"><a href="https://www.homedepot.com/tool-truck-rental/used-tools/index.html">
-                  | Used Tools For Sale |
+                    </li>
+                    <li id="find"><a href="https://www.homedepot.com/tool-truck-rental/used-tools/index.html">
+                      | Used Tools For Sale |
                 </a>
-                </li>
-                <li id="find"><a href="https://www.homedepot.com/c/Tool_Rental_FAQ">
-                  | Tool Rental FAQ |
+                    </li>
+                    <li id="find"><a href="https://www.homedepot.com/c/Tool_Rental_FAQ">
+                      | Tool Rental FAQ |
                 </a>
-                </li>
-              </ul>
+                    </li>
+                  </ul>
+                </div>
+              </Gallery>
             </div>
-          </Gallery>
-        </div>
 
-      </div>
-      </div>
+          </div>
+        </div>
       </div>
     );
   }
@@ -605,8 +653,9 @@ EnhancedTable.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-  /////////////////////////////////////////////////////////////////////////////////////////////////////
- /////////////////     End Of Image Slider, Tool Table, And Gallery On Page   ////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////     End Of Image Slider, Tool Table, And Gallery On Page   ////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////////
 
 export default withStyles(styles)(EnhancedTable);
+

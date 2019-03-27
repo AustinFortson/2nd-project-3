@@ -99,7 +99,10 @@ class UserInput extends React.Component {
           <Inputs4 placehold="Driver License Expiration Date" type="date" name="nameDriverExp" value={this.state.nameDriverExp} handleChange={this.handleChange}/>
           <Inputs4 placehold="Driver License State" type="text" name="nameDriverState" value={this.state.nameDriverState} handleChange={this.handleChange}/>
         </Row>
-        <Submit handleSubmit={this.handleSubmit} href="/search"/>
+        <Submit handleSubmit={this.handleSubmit}/>
+        <a href="/search">
+        <p id="searchTools">Search For Tools</p>
+          </a>
       </Form>
       </div>
         </div>

@@ -147,6 +147,51 @@ a{
 
 }
 
+#modal{
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
+    right: -70%;
+    top: 20%;
+    width: 400px; 
+    height: 1438px; 
+    background-color: #F96302;
+    color: white;
+    border: 1px solid black;
+}
+
+#modal-header{
+    text-align: center;
+    background-color: white;
+    color: black;
+    border-bottom: 1px solid black;
+    
+}
+
+#modalContent {
+    text-align: center
+}
+
+#close{
+    position: relative;
+    right:-180px;
+    cursor: pointer;
+}
+
+#paymentButton {
+    background-color: black;
+    position: relative;
+    right:-250px;
+    bottom: -205px;
+}
+
+#modal-footer {
+    background-color: white;
+    color: black;
+    border-top: 1px solid black;
+    margin-top: 160px
+}
+
 
   /*-----------------*/
  /*USER PAGE STYLING*/
@@ -192,8 +237,13 @@ a{
     border-left: 3px solid #F96302
 }
 
-#submitButton {
+#saveButton {
     background-color: #F96302;
+    margin-right: 20px;
+}
+
+#searchTools{
+    color: gray;
 }
 
   /*--------------------*/
@@ -216,6 +266,7 @@ a{
  
     padding-left:100px;
     padding-right: 100px;
+    
  
  }
  #getStart {
@@ -228,4 +279,12 @@ a{
 
  #getStarted {
      background-color: #f96302;
+     height: 100px;
+     width: 500px;
+     font-size: 30px;
+ }
+
+ #welcome {
+    border: 3px solid black;
+    padding:20px;
  }

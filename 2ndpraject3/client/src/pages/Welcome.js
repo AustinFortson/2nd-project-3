@@ -17,9 +17,9 @@ class Welcome extends React.Component {
        <img id="welcomeH" src="https://corporate.homedepot.com/sites/default/files/styles/hero/public/image_gallery/Homer_Header.png?itok=YmsccXh1" ></img>
 
 
-       <h1>Welcome to the Home Depot Tool Rental Application</h1>
+       <h1 id="welcome">Welcome to the Home Depot Tool Rental Application</h1>
 
-       <a class="waves-effect waves-light btn-small" id="getStarted"><i class="material-icons left">build</i>Get Started</a>
+       <a class="waves-effect waves-light btn-small" id="getStarted" href="/user"><i class="material-icons left">build</i>Get Started</a>
        </div>
 
        </div>
